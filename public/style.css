@@ -1,5 +1,11 @@
+body {
+    background-color: rgb(19, 19, 19);   
+    color: aliceblue;
+}
+
 code {
-    background-color: whitesmoke;
+    background-color: rgb(37, 37, 37);
+    color: rgb(206, 206, 206);
 }
 
 section, header {
