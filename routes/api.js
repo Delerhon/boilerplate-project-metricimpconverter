@@ -11,13 +11,13 @@ const app = express()
 
 
 
-module.exports = function (app) {
+module.exports = (app) => {
   const strBadNum   = {string: 'Bad input! You didn\'t give a number.'}
   const strNoInput  = {string: 'No input! Come on and type something in!'}
   const strNoUnit   = {string: 'No input! Your Unit is bad or isn\'t supported.'}
   const strBadUnit  = {string: 'Bad input! Your Unit is bad or isn\'t supported.'}
 
-  let convertHandler = new ConvertHandler();
+  const convertHandler = new ConvertHandler();
 
   app.route('/api/convert').get((req, res, next) => {
     if (!req.query.input)                     {return res.json(strNoInput)}
