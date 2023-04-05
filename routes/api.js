@@ -12,22 +12,23 @@ const app = express()
 
 
 module.exports = function (app) {
-  
+  const strBadNum   = {string: 'Bad input! You didn\'t give a number.'}
+  const strNoInput  = {string: 'No input! Come on and type something in!'}
+  const strNoUnit   = {string: 'No input! Your Unit is bad or isn\'t supported.'}
+  const strBadUnit  = {string: 'Bad input! Your Unit is bad or isn\'t supported.'}
+
   let convertHandler = new ConvertHandler();
 
   app.route('/api/convert').get((req, res, next) => {
-      if (!inputCheck(req.query.input)) {
-        res.json({string: 'nicht ok'})
-
-      }
-      res.json({string: 'test'})
-
+    if (!req.query.input)                     {return res.json(strNoInput)}
+    req.query.input   = convertHandler.trimInput(req.query.input)
+    req.query.num     = convertHandler.getNum(req.query.input)
+    if (!req.query.num)                       { return res.json(strBadNum)} 
+    req.query.unit    = convertHandler.getUnit(req.query.input)
+    if (req.query.unit == 'noLettersFound')   { return res.json(strNoUnit)}
+    if (!req.query.unit)                      { return res.json(strBadUnit)}
+    
+      
+    res.json({string: 'test'})
   })
 };
-
-const inputCheck = (input) => {
-    //input prüfen mit Regex: Nummern [Punkt oder Kommma] Nummern Buchstaben[nur gültige Einheiten]
-    console.log(input)
-    const regex = /^((\d+[.,]\d+)|(\d+))(gal|L|lbs|kg|mi|km)$/i
-    return !!input.match(regex)
-}
