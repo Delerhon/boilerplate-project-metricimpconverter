@@ -2,11 +2,18 @@ function ConvertHandler() {
   
   this.getNum = (input) => {
     
-    const regex = /^((\d+[.,]\d+)|(\d+))\w+$/i // finde einen gültigen Zahlenwert
+    const regex = /^((\d+[.,]{0,1}\d+)|(\d+))\w+$/i // finde einen gültigen Zahlenwert
     const testNum = !!input.match(regex)
-    if (!testNum) { return testNum}
+    if (!testNum) { 
+      return testNum
+    }
+    let num = input.match(regex)[1]
     
-    return input.match(regex)[1] || false;
+    if (/,/g.test(num)) {
+      num = num.replace(",", ".")
+    }
+
+    return num * 1 || false;
   };
   
   this.getUnit = (input) => {
@@ -17,9 +24,9 @@ function ConvertHandler() {
 
     const regexValidUnit = /(gal|L|lbs|kg|mi|km)$/i
     const testUnit = !!input.match(regexValidUnit)
-    if (!testUnit) { return testUnit}
+    if (!testUnit) { return testUnit }
 
-    return input.match(regexValidUnit)[1];
+    return input.match(regexValidUnit)[1] ;
   };
   
   this.getReturnUnit = (initUnit) => {
