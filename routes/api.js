@@ -29,6 +29,10 @@ module.exports = (app) => {
     if (!req.query.unit)                      { return res.json(strBadUnit)}
     
       
-    res.json({string: 'test'})
+    res.json({string: `${initNum} ${initUnitString} converts to ${returnNum} ${returnUnitString}`})
   })
 };
+ /*
+ Your return will consist of the 
+ initNum, initUnit, returnNum, returnUnit, string spelling out units in the format '{initNum} {initUnitString} converts to {returnNum} {returnUnitString}' with the result rounded to 5 decimals.
+ */
