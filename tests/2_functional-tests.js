@@ -6,7 +6,7 @@ const server = require('../server');
 chai.use(chaiHttp);
 
 suite('Functional Tests', () => {
-    test('Convert 10L to gallons', (done) => {
+    test('#1 Convert 10L to gallons', (done) => {
         const testParam = '10L'
         chai
           .request(server)
@@ -18,7 +18,7 @@ suite('Functional Tests', () => {
           })
     })
 
-    test('Give Error for invalid input: 32g', (done) => {
+    test('#2 Give Error for invalid input: 32g', (done) => {
         const testParam = '32g'
 
         chai
@@ -31,7 +31,7 @@ suite('Functional Tests', () => {
           })
     })
 
-    test('Give Error for invalid input: 3/7.2/4kg', (done) => {
+    test('#3 Give Error for invalid input: 3/7.2/4kg', (done) => {
         const testParam = '3/7.2/4kg'
 
         chai
@@ -44,7 +44,7 @@ suite('Functional Tests', () => {
           })
     })
 
-    test('Give Error for invalid input: 3/7.2/4kilomegagram', (done) => {
+    test('#4 Give Error for invalid input: 3/7.2/4kilomegagram', (done) => {
         const testParam = '3/7.2/4kilomegagram'
 
         chai
@@ -57,7 +57,7 @@ suite('Functional Tests', () => {
           })
     })
 
-    test('Convert with no numer but kg', (done) => {
+    test('#5 Convert with no numer but kg', (done) => {
         const testParam = 'kg'
 
         chai
