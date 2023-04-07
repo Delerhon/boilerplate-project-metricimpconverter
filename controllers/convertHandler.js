@@ -60,9 +60,9 @@ function ConvertHandler() {
 
   this.getNum = (input) => {
 
-    const regexNoNum = /\d+/
-    const isNoNum = !!input.match(regexNoNum)
-    if (!isNoNum) { return 1}
+    const regexNum = /\d+/
+    const isNum = !!input.match(regexNum)
+    if (!isNum) { return 1}
     const regexFractional   = /(\/)/g
     const testFractial      = !!input.match(regexFractional)
     if (testFractial) {
