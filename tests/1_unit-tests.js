@@ -27,48 +27,49 @@ const strGal                        =   '13gal'
 const strKm                         =   '13km'
 const strMi                         =   '13mi'
     // bad values
-const strBad                        =   '13im'    
+const strBad                        =   '13im'
+const numBad                        =   '1,48/5/48kg'   
 
 suite('Unit Tests', () => {
     // #1
-    test('whole number', () => {
+    test('#1 whole number', () => {
         const input = convertHandler.getNum(wholeNumber)
         assert.isNumber(input,          `Handler gives a number`)
         assert.equal(input % 1, 0,      `Handler can handle whole numbers`);
     })
     // #2
-    test('decimal number', () => {
+    test('#2 decimal number', () => {
         const input = convertHandler.getNum(decimalNumber)
         assert.isNumber(input,          `Handler gives a number`)
         assert.notEqual(input % 1, 0,   `Handler can handle decimal numbers`);
     })
 
     // #3
-    test('fractial input', () => {
+    test('#3 fractial input', () => {
         const input = convertHandler.getNum(fractialNumber)
         assert.isNumber(input,          `Handler makes Number from fractional`)
     })
 
     // #4
-    test('fractial input with decimal', () => {
+    test('#4 fractial input with decimal', () => {
         const input = convertHandler.getNum(fractialNumberWithDecimal)
         assert.isNumber(input,          `Handler makes Number from fractional`)
     })
 
     // #5
-    test('error on double fraction', () => {
+    test('#5 error on double fraction', () => {
         const input = convertHandler.getNum(doubleFractional)
         assert.equal(input, 'error',          `throw Error on double friction`)
     })
 
     // #6
-    test('default Num to 1 if no num input', () => {
+    test('#6 default Num to 1 if no num input', () => {
         const input = convertHandler.getNum(strNoNum)
         assert.equal(input, 1,          `set 1 if no num is in input`)
     })
 
     // #7
-    test('read each valid input', () => {
+    test('#7 read each valid input', () => {
         assert.equal(convertHandler.getUnit(strL),      'L',    `read L`)
         assert.equal(convertHandler.getUnit(strGal),    'gal',  `read gal`)
         assert.equal(convertHandler.getUnit(strMi),     'mi',   `read mi`)
@@ -78,12 +79,12 @@ suite('Unit Tests', () => {
     })
 
     // #8
-    test('return error for an invalid unit input', () => {
+    test('#8 return error for an invalid unit input', () => {
         assert.isTrue(/error/.test(convertHandler.getUnit(strBad)),    `read L`)
     })
 
     // #9
-    test('return correct return unit for each valid input unit', () => {
+    test('#9 return correct return unit for each valid input unit', () => {
         assert.equal(convertHandler.getReturnUnit(strUnits.L),      'gal',    `get gal`)
         assert.equal(convertHandler.getReturnUnit(strUnits.gal),    'L',      `get L`)
         assert.equal(convertHandler.getReturnUnit(strUnits.mi),     'km',     `get km`)
@@ -93,7 +94,7 @@ suite('Unit Tests', () => {
     })
 
     // #10
-    test('correct spelled Units', () => {
+    test('#10 correct spelled Units', () => {
         assert.equal(convertHandler.spellOutUnit(strUnits.gal),     'gallons',      `correct spell for gal`)
         assert.equal(convertHandler.spellOutUnit(strUnits.L),       'litres',       `correct spell for L`)
         assert.equal(convertHandler.spellOutUnit(strUnits.kg),      'kilograms',    `correct spell for kg`)
@@ -103,39 +104,45 @@ suite('Unit Tests', () => {
     })
 
     // #11
-    test('convert gal to L', () => {
+    test('#11 convert gal to L', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'gal'),     Math.round(initNum * galToL * 100_000) / 100_000,       `correct value for gal`)
     })
 
     // #12
-    test('convert L to gal', () => {
+    test('#12 convert L to gal', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'L'),     Math.round(initNum / galToL * 100_000) / 100_000,       `correct value for gal`)
     })
 
-    // #12
-    test('convert km to mi', () => {
+    // #13
+    test('#13 convert km to mi', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'km'),     Math.round(initNum / miToKm * 100_000) / 100_000,       `correct value for gal`)
     })
 
-    // #13
-    test('convert mi to km', () => {
+    // #14
+    test('#14 convert mi to km', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'mi'),     Math.round(initNum * miToKm * 100_000) / 100_000,       `correct value for gal`)
     })
 
-    // #14
-    test('convert kg to lbs', () => {
+    // #15
+    test('#15 convert kg to lbs', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'kg'),     Math.round(initNum / lbsToKg * 100_000) / 100_000,       `correct value for gal`)
     })
 
-    // #15
-    test('convert lbs to kg', () => {
+    // #16
+    test('#16 convert lbs to kg', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'lbs'),     Math.round(initNum * lbsToKg * 100_000) / 100_000,       `correct value for gal`)
+    })
+
+    // #17
+    test('#17 invalid num test: 1,48/5/48kg', () => {
+        const input = numBad
+        assert.isNotTrue(convertHandler.getNum(input),      `correct value for gal`)
     })
 
 });
