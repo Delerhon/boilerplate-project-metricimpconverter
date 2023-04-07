@@ -67,12 +67,12 @@ function ConvertHandler() {
     const testFractial      = !!input.match(regexFractional)
     if (testFractial) {
       const isDoubleFraction  = input.match(regexFractional)
-      if (isDoubleFraction.length > 1) {return 'error'}
+      if (isDoubleFraction.length > 1) {return 'invalid number'}
 
       const leftNum = handleNum(input.match(/([\d,.]+)\/([\d,.]+)/)[1])
       const rightNum = handleNum(input.match(/([\d,.]+)\/([\d,.]+)/)[2])
       
-      return !!leftNum && !!rightNum ? leftNum / rightNum : false;
+      return !!leftNum && !!rightNum ? leftNum / rightNum : 'invalid number';
 
     } else {
       
@@ -84,11 +84,11 @@ function ConvertHandler() {
 
     const regexIsInput = /(\w+)$/i // finde einen gültigen Textwert
     const testUnitExist = !!input.match(regexIsInput)
-    if (!testUnitExist) {return 'error1'}
+    if (!testUnitExist) {return 'invalid unit'}
 
     const regexValidUnit = /(gal|L|lbs|kg|mi|km)$/i
     const testUnit = !!input.match(regexValidUnit)
-    if (!testUnit) { return 'error2' }
+    if (!testUnit) { return 'invalid unit' }
     const inputUnit = input.match(regexValidUnit)[1]
     
     return !!inputUnit.match(/^[Ll]{1}$/) ? inputUnit.toUpperCase() : inputUnit.toLowerCase()
@@ -128,7 +128,7 @@ const handleNum = (input) => {
   input = input.toString()
   const regex = /^((\d+[.,]{0,1}\d+)|(\d+))/ // finde einen gültigen Zahlenwert
   const testNum = !!input.match(regex)
-  if (!testNum) return testNum
+  if (!testNum) return 'invalid number'
   let num = input.match(regex)[1]
   
   num = /,/g.test(num) ? num.replace(",", ".") * 1 : num * 1;
