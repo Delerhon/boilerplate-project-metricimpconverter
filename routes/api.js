@@ -28,7 +28,7 @@ module.exports = (app) => {
   const convertHandler = new ConvertHandler();
 
   app.route('/api/convert').get((req, res, next) => {
-    if (!req.query.input)                     {return res.json({ string: strNoInput })}
+    if (!req.query.input)                     {return res.json(strNoInput)}
     req.query.input   = convertHandler.trimInput(req.query.input)
     const initNum     = convertHandler.getNum(req.query.input)
     const initUnit    = convertHandler.getUnit(req.query.input)
@@ -36,10 +36,10 @@ module.exports = (app) => {
     // Error responses
     if ((initNum == 'invalid number') &&
         (initUnit == 'invalid unit')) {
-          return res.json(strAllBad)
+          return res.json('invalid number and unit')
         }
-    if (initNum == 'invalid number')             { return res.json({ string: initNum }) }           
-    if (initUnit == 'invalid unit')           { return res.json({ string: initUnit }) }
+    if (initNum == 'invalid number')             { return res.json(initNum) }           
+    if (initUnit == 'invalid unit')           { return res.json(initUnit) }
 
     // build response values
     const returnUnit  = convertHandler.getReturnUnit(initUnit)

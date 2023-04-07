@@ -31,7 +31,7 @@ suite('Functional Tests', () => {
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            assert.equal(res.body.string, 'invalid unit');
+            assert.equal(res.body, 'invalid unit');
             done()
           })
     })
@@ -46,7 +46,7 @@ suite('Functional Tests', () => {
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            assert.equal(res.body.string, 'invalid number');
+            assert.equal(res.body, 'invalid number');
             done()
           })
     })
@@ -61,7 +61,7 @@ suite('Functional Tests', () => {
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            assert.equal(res.body.string, 'invalid number and unit');
+            assert.equal(res.body, 'invalid number and unit');
             done()
           })
     })
