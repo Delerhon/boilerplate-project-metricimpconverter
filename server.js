@@ -40,12 +40,13 @@ app.use((req, res, next) => {
     .send('Not Found');
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || process.env['PORT'] ||3000;
+const nodeENV = process.env['NODE_ENV'] || process.env.NODE_ENV
 
 //Start our server and tests!
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
-  if(process.env.NODE_ENV==='test') {
+  if(nodeENV==='test') {
     console.log('Running Tests...');
     setTimeout(() => {
       try {
