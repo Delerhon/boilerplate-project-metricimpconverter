@@ -1,9 +1,9 @@
 const chai = require('chai');
-let assert = chai.assert;
+const assert = chai.assert;
 const ConvertHandler = require('../controllers/convertHandler.js');
 const { Test } = require('mocha');
 
-let convertHandler = new ConvertHandler();
+const convertHandler = new ConvertHandler();
 
 const galToL    = 3.78541;
 const lbsToKg   = 0.453592;
