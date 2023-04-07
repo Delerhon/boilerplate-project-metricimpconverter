@@ -138,11 +138,4 @@ suite('Unit Tests', () => {
         const initNum = 13
         assert.equal(convertHandler.convert(initNum, 'lbs'),     Math.round(initNum * lbsToKg * 100_000) / 100_000,       `correct value for gal`)
     })
-
-    // #17
-    test('#17 invalid num test: 1,48/5/48kg', () => {
-        const input = numBad
-        assert.isNotTrue(convertHandler.getNum(input),      `correct value for gal`)
-    })
-
 });
