@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 suite('Functional Tests', () => {
     test('#1 Convert 10L to gallons', (done) => {
         const testParam = '10L'
-
+        chai.
           .request(server)
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
