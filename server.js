@@ -20,9 +20,10 @@ app.use(cors({origin: '*'})); //For FCC testing purposes only
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use((req, res) => {
+app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`)
-})
+  next()
+}) 
 
 //Index page (static HTML)
 app.route('/')
