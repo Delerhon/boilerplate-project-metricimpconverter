@@ -28,20 +28,18 @@ module.exports = (app) => {
   const convertHandler = new ConvertHandler();
 
   app.route('/api/convert').get((req, res, next) => {
-    if (!req.query.input)                     {return res.json(strNoInput)}
-    req.query.input   = convertHandler.trimInput(req.query.input)
-    const initNum     = convertHandler.getNum(req.query.input)
-    const initUnit    = convertHandler.getUnit(req.query.input)
+    if (!req.query.input)                     {return res.json({ string: strNoInput })}
+    req.query.input   = convertHandler.trimInput({ string: req.query.input })
+    const initNum     = convertHandler.getNum({ string: req.query.input })
+    const initUnit    = convertHandler.getUnit({ string: req.query.input })
     
     // Error responses
-    if ((!initNum | initNum == 'error') &&
-        (initUnit == 'error1' | initUnit == 'error2')){
+    if ((initNum == 'invalid number') &&
+        (initUnit == 'invalid unit')) {
           return res.json(strAllBad)
         }
-    if (!initNum)                       { return res.json(strBadNum) }
-    if (initNum == 'error')             { return res.json(strDoubleFraction) }           
-    if (initUnit == 'error1')           { return res.json(strNoUnit) }
-    if (initUnit == 'error2')           { return res.json(strBadUnit)} 
+    if (initNum == 'invalid number')             { return res.json({ string: initNum }) }           
+    if (initUnit == 'invalid unit')           { return res.json({ string: initUnit }) }
 
     // build response values
     const returnUnit  = convertHandler.getReturnUnit(initUnit)
