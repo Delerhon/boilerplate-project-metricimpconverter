@@ -59,7 +59,7 @@ suite('Unit Tests', () => {
     // #5
     test('#5 error on double fraction', () => {
         const input = convertHandler.getNum(doubleFractional)
-        assert.equal(input, 'error',          `throw Error on double friction`)
+        assert.equal(input, 'invalid number',          `throw Error on double friction`)
     })
 
     // #6
@@ -80,7 +80,7 @@ suite('Unit Tests', () => {
 
     // #8
     test('#8 return error for an invalid unit input', () => {
-        assert.isTrue(/error/.test(convertHandler.getUnit(strBad)),    `read L`)
+        assert.isTrue(/invalid unit/.test(convertHandler.getUnit(strBad)),    `throw invalid unit`)
     })
 
     // #9
