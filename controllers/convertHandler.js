@@ -111,9 +111,11 @@ function ConvertHandler() {
   };
   
   this.getString = (initNum, initUnit, returnNum, returnUnit) => {
-    let result;
-    
-    return result;
+    // 10 litres converts to 2,64172 gallons
+    const initUnitSpelling = this.spellOutUnit(initUnit)
+    const returnUnitSpelling = this.spellOutUnit(returnUnit)
+
+    return `${initNum} ${initUnitSpelling} converts to ${returnNum} ${returnUnitSpelling}`
   };
 
   this.trimInput = (input) => input.replace(/ /g, '')
