@@ -29,9 +29,9 @@ module.exports = (app) => {
 
   app.route('/api/convert').get((req, res, next) => {
     if (!req.query.input)                     {return res.json({ string: strNoInput })}
-    req.query.input   = convertHandler.trimInput({ string: req.query.input })
-    const initNum     = convertHandler.getNum({ string: req.query.input })
-    const initUnit    = convertHandler.getUnit({ string: req.query.input })
+    req.query.input   = convertHandler.trimInput(req.query.input)
+    const initNum     = convertHandler.getNum(req.query.input)
+    const initUnit    = convertHandler.getUnit(req.query.input)
     
     // Error responses
     if ((initNum == 'invalid number') &&
