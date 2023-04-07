@@ -126,10 +126,10 @@ module.exports = ConvertHandler;
 
 const handleNum = (input) => {
   input = input.toString()
-  const regex = /^((\d+[.,]{0,1}\d+)|(\d+))/gi // finde einen gültigen Zahlenwert
+  const regex = /^((\d+[.,]{0,1}\d+)|(\d+))/ // finde einen gültigen Zahlenwert
   const testNum = !!input.match(regex)
   if (!testNum) return testNum
-  let num = input.match(regex)[0]
+  let num = input.match(regex)[1]
   
   num = /,/g.test(num) ? num.replace(",", ".") * 1 : num * 1;
 
