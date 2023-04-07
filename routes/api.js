@@ -38,8 +38,8 @@ module.exports = (app) => {
         (initUnit == 'invalid unit')) {
           return res.json('invalid number and unit')
         }
-    if (initNum == 'invalid number')             { return res.json(initNum) }           
-    if (initUnit == 'invalid unit')           { return res.json(initUnit) }
+    if (initNum == 'invalid number')             { return res.json('invalid number') }           
+    if (initUnit == 'invalid unit')           { return res.json('invalid unit') }
 
     // build response values
     const returnUnit  = convertHandler.getReturnUnit(initUnit)
