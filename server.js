@@ -51,8 +51,8 @@ app.listen(port, () => {
       try {
         runner.run();
       } catch(e) {
-          console.log('Tests are not valid:');
-          console.error(e);
+          console.log('Tests are not valid:')
+          console.error(e)
       }
     }, 1500);
   }
