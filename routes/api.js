@@ -15,12 +15,12 @@ app.route('/api/convert').get((req, res, next) => {
 
 
 module.exports = (app) => {
-  const strBadNum           = {string: 'Bad input! You didn\'t give a number.'}
-  const strNoInput          = {string: 'No input! Come on and type something in!'}
-  const strNoUnit           = {string: 'No input! Your Unit is bad or isn\'t supported.'}
-  const strBadUnit          = {string: 'Bad input! Your Unit is bad or isn\'t supported.'}
-  const strDoubleFraction   = {string: 'Bad input! Can\'t handle double fraction.'}
-  const strAllBad           = {string: 'Bad input! Number and unit are invalid.'}
+  const strBadNum           = {string: 'invalid number'}
+  const strNoInput          = {string: 'invalid number'}
+  const strNoUnit           = {string: 'invalid unit'}
+  const strBadUnit          = {string: 'invalid unit'}
+  const strDoubleFraction   = {string: 'invalid number'}
+  const strAllBad           = {string: 'invalid number and unit'}
 
   
 

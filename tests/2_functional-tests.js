@@ -26,7 +26,7 @@ suite('Functional Tests', () => {
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            assert.equal(res.body.string, 'Bad input! Your Unit is bad or isn\'t supported.');
+            assert.equal(res.body.string, 'invalid unit');
             done()
           })
     })
@@ -39,7 +39,7 @@ suite('Functional Tests', () => {
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            assert.equal(res.body.string, 'Bad input! Can\'t handle double fraction.');
+            assert.equal(res.body.string, 'invalid number');
             done()
           })
     })
@@ -52,7 +52,7 @@ suite('Functional Tests', () => {
           .get(`/api/convert?input=${testParam}`)
           .end((err, res) => {
             assert.equal(res.status, 200);
-            assert.equal(res.body.string, 'Bad input! Number and unit are invalid.');
+            assert.equal(res.body.string, 'invalid number and unit');
             done()
           })
     })
